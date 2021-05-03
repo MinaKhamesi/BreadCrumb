@@ -8,6 +8,6 @@
 ### Instruction
 
 - Run `npm install` inside server and client folders
-  -Run `npm run dev` inside server folder
+- Run `npm run dev` inside server folder
 
 ![screenshot](https://github.com/MinaKhamesi/BreadCrumb/blob/main/screenshot.png?raw=true)
