@@ -5,4 +5,9 @@
 - the content of current location is showing on the page, and by clicking on the items, user can navigate through our directory tree
 - a very simple server is in place with a single GET /path/:givenpath route. since it was very simple server, I included our only route in the server.js itself.
 
+### Instruction
+
+- Run `npm install` inside server and client folders
+  -Run `npm run dev` inside server folder
+
 ![screenshot](https://github.com/MinaKhamesi/BreadCrumb/blob/main/screenshot.png?raw=true)
