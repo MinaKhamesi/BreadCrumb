@@ -6,7 +6,8 @@ const useStyles = makeStyles((theme) => ({
   root: {
     padding: theme.spacing(1.5),
     display: "flex",
-    height: theme.spacing(6),
+    flexWrap: "wrap",
+    height: theme.spacing(10),
     fontSize: theme.spacing(2),
   },
   location: {
@@ -38,7 +39,7 @@ const BreadCrumb = () => {
               : classes.location
           }
         >
-          <span>{loc}</span>
+          <span>{loc.split("-")[loc.split("-").length - 1]}</span>
           {idx !== location.length - 1 && (
             <span className={classes.seperator}>{`>`}</span>
           )}

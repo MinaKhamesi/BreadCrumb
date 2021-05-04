@@ -68,14 +68,16 @@ const Content = () => {
       <div className={classes.content}>
         {content.length === 0 ? (
           <div className={classes.file}>{`THIS IS FILE: ${
-            location[location.length - 1]
+            location[location.length - 1].split("-")[
+              location[location.length - 1].split("-").length - 1
+            ]
           }`}</div>
         ) : (
           content.map((con, idx) => (
             <div
               key={idx}
               className={classes.directory}
-              onClick={() => addToLocation(con.name)}
+              onClick={() => addToLocation(con.path)}
             >
               <img
                 src={con.type === "&#34;dir&#34;" ? directory : file}

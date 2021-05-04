@@ -14,27 +14,31 @@ const getPath = (req, res) => {
 
   while (pathIdx < requestedPath.length && currentLocation != null) {
     //if user only wants root, return the info of children
-    if (destination === "root") {
+    if (givenpath === "root") {
       const content = [];
       for (child in currentLocation.children) {
-        const { children, type } = currentLocation.children[child];
-        content.push({ name: child, type });
+        const { children, ...childInfo } = currentLocation.children[child];
+        content.push({ name: child, ...childInfo });
       }
       return res.status(200).json({ success: true, content });
     }
     //if the destination is a child of current directory, return the info
-    if (destination in currentLocation.children) {
+    if (
+      destination in currentLocation.children &&
+      currentLocation.children[destination].path === givenpath
+    ) {
       currentLocation = currentLocation.children[destination];
       const content = [];
       for (child in currentLocation.children) {
-        const { children, type } = currentLocation.children[child];
-        content.push({ name: child, type });
+        const { children, ...childInfo } = currentLocation.children[child];
+        content.push({ name: child, ...childInfo });
       }
       return res.status(200).json({
         success: true,
         content,
       });
     }
+
     // if neither of the situation happened, go deeper through the given path list and our location in directory tree
     const nextLocationRequested = requestedPath[pathIdx + 1];
 

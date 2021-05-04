@@ -18,6 +18,10 @@ export const GlobalProvider = ({ children }) => {
   //actions
 
   const addToLocation = (newLocation) => {
+    if (newLocation in state.location) {
+      goDirectlyToLocation(newLocation);
+      return;
+    }
     dispatch({ type: "ADD_TO_LOCATION", payload: newLocation });
   };
 
@@ -30,7 +34,7 @@ export const GlobalProvider = ({ children }) => {
   };
 
   const getContent = useCallback(async () => {
-    const locationToPass = state.location.join("-");
+    const locationToPass = state.location[state.location.length - 1];
 
     const res = await axios.get(`http://localhost:3001/path/${locationToPass}`);
     if (res.status === 200) {
