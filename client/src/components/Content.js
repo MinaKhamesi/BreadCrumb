@@ -44,6 +44,7 @@ const Content = () => {
 
   const {
     content,
+    loading,
     location,
     addToLocation,
     getContent,
@@ -66,18 +67,18 @@ const Content = () => {
         </Button>
       )}
       <div className={classes.content}>
-        {content.length === 0 ? (
+        {loading ? (
+          <div>Loading...</div>
+        ) : content.length === 0 ? (
           <div className={classes.file}>{`THIS IS FILE: ${
-            location[location.length - 1].split("-")[
-              location[location.length - 1].split("-").length - 1
-            ]
+            location[location.length - 1].name
           }`}</div>
         ) : (
           content.map((con, idx) => (
             <div
               key={idx}
               className={classes.directory}
-              onClick={() => addToLocation(con.path)}
+              onClick={() => addToLocation(con)}
             >
               <img
                 src={con.type === "&#34;dir&#34;" ? directory : file}

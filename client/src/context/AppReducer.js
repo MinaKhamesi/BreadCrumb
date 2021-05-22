@@ -13,15 +13,23 @@ export const AppReducer = (state, action) => {
         ),
       };
     case "GO_TO_LOCATION":
-      const targetIdx = state.location.indexOf(action.payload);
+      const targetIdx = state.location
+        .map((l) => l.path)
+        .indexOf(action.payload.path);
       return {
         ...state,
         location: state.location.filter((l, idx) => idx <= targetIdx),
+      };
+    case "CONTENT_REQUEST":
+      return {
+        ...state,
+        loading: true,
       };
     case "CONTENT_LOADED":
       return {
         ...state,
         content: action.payload,
+        loading: false,
       };
     default:
       return state;

@@ -39,7 +39,7 @@ const BreadCrumb = () => {
               : classes.location
           }
         >
-          <span>{loc.split("-")[loc.split("-").length - 1]}</span>
+          <span>{loc.path.split("-")[loc.path.split("-").length - 1]}</span>
           {idx !== location.length - 1 && (
             <span className={classes.seperator}>{`>`}</span>
           )}
